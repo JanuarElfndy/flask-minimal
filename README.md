@@ -41,7 +41,7 @@ sudo apt install python3 python3-venv python3-pip -y
 
 The Flask app will start, and you can view it by navigating to http://localhost:5000 in your browser.
 
-## Tambahan Flask-app agar dapat berjalan otomatis
+## Tambahan instalasi
 Kita menggunakan systemd untuk menjalankan flask-app secara otomatis pada saat instance EC2 dinyalakan
 1. Langkah awal buat file service systemd menggunakan code :
    ``` sudo nano /etc/systemd/system/flask-app.service ```
