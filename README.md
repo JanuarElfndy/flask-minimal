@@ -41,6 +41,43 @@ sudo apt install python3 python3-venv python3-pip -y
 
 The Flask app will start, and you can view it by navigating to http://localhost:5000 in your browser.
 
+##Tambahan Flask-app agar dapat berjalan otomatis
+Kita menggunakan systemd untuk menjalankan flask-app secara otomatis pada saat instance EC2 dinyalakan
+1. Langkah awal buat file service systemd menggunakan code :
+   ``` sudo nano /etc/systemd/system/flask-app.service ```
+   lalu isi dengan :
+```[Unit]
+Description=Flask Minimal App
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/flask-minimal
+Environment=PATH=/home/ubuntu/flask-minimal/venv/bin
+ExecStart=/home/ubuntu/flask-minimal/venv/bin/python app.py
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+```
+
+2. kemudian aktifkan dan jalankan service
+```# Reload systemd
+sudo systemctl daemon-reload
+
+# Enable service (akan start otomatis saat boot)
+sudo systemctl enable flask-app.service
+
+# Start service sekarang
+sudo systemctl start flask-app.service
+
+# Cek status
+sudo systemctl status flask-app.service
+```
+   
+
 ## Usage
 
 This starter project is ready to be used as a foundation for building web applications. The app.py file contains all the Flask routes and logic, making it simple to expand and customize. You can add more templates, routes, or static files as needed.
