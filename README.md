@@ -45,7 +45,7 @@ python app.py
 Aplikasi Flask akan mulai berjalan, dan Anda dapat melihatnya dengan membuka http://localhost:5000 di browser Anda.
 
 
-## Tambahan instalasi agar flask-app otomatis
+## Tambahan instalasi agar flask-app berjalan secara otomatis
 
 Kita menggunakan systemd untuk menjalankan flask-app secara otomatis pada saat instance EC2 dinyalakan
 
